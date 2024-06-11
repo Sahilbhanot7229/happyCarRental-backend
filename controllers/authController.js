@@ -11,6 +11,7 @@ exports.signup = async (req, res) => {
     }
 
     user = new User({ email, password });
+    user.password = await bcrypt.hash(password, 10);
     await user.save();
 
     res.status(201).json({ message: 'User created successfully' });
@@ -54,6 +55,7 @@ exports.forgotPassword = async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: 'User not found' });
     }
+    
     user.password = await bcrypt.hash(password, 10);
     await user.save();
 
