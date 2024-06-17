@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: false 
+  },
   firstName: {
     type: String,
     required: [false, 'First name is required'],
@@ -23,7 +27,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Password is required'],
-    minlength: [6, 'Password must be at least 6 characters long']
+    minlength: [3, 'Password must be at least 6 characters long']
   },
   phoneNumber: {
     type: String,
@@ -33,7 +37,31 @@ const userSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  dateOfBirth: {
+    type: Date,
+    required: false,
+  },
+  phoneNumber: {
+    type: String,
+    required: false,
+  },
+  address: {
+    type: String,
+    required: false,
+  },
+  city: {
+    type: String,
+    required: false,
+  },
+  country: {
+    type: String,
+    required: false,
+  },
+  zipCode: {
+    type: String,
+    required: false,
+  },
 });
 
 
