@@ -42,10 +42,6 @@ const userSchema = new mongoose.Schema({
     type: Date,
     required: false,
   },
-  phoneNumber: {
-    type: String,
-    required: false,
-  },
   address: {
     type: String,
     required: false,
@@ -62,6 +58,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  isAdmin:{
+    type: Boolean,
+    required: false,
+    default:false,
+  }
+
 });
 
 
