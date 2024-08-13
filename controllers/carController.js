@@ -34,6 +34,18 @@ exports.getCars = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+exports.getCarById = async (req, res) => {
+    try {
+        const car = await Car.findById(req.params.id).populate('imageId');
+        if (!car) {
+            return res.status(404).json({ message: 'Car not found' });
+        }
+        res.json(car);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
 
 
 exports.updateCar = async (req, res) => {
